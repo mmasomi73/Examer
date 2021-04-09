@@ -14,12 +14,12 @@
                 @if(auth()->guest())
                 <div class="">
                     <a
-                        href="{{route('login')}}"
+                        href="{{route('auth.login')}}"
                         class="inline-block py-2 px-4 text-gray-700 bg-white hover:bg-gray-100 rounded-lg mr-6"
                     >Login</a
                     >
                     <a
-                        href="{{route('register')}}"
+                        href="{{route('auth.register')}}"
                         class="inline-block py-2 px-4 text-gray-700 bg-white hover:bg-gray-100 rounded-lg"
                     >Register</a
                     >

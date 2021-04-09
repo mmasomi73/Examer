@@ -14,7 +14,7 @@
                 <div class="mt-0">
                     <div class="my-5 text-sm">
                         <label for="name" class="block text-black">Name</label>
-                        <input wire:model.lazy="name" name="name" type="text" id="name"
+                        <input wire:model.defer="name" name="name" type="text" id="name"
                                autocomplete="off"
                                class="rounded-md px-4 py-2 border @error('name') border-red-600 @enderror mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md w-full"
                                placeholder="Name ... "/>
@@ -22,27 +22,33 @@
                     </div>
                     <div class="my-5 text-sm">
                         <label for="email" class="block text-black">Email</label>
-                        <input wire:model.lazy="email" name="email" type="text" id="email"
+                        <input wire:model.defer="email" name="email" type="text" id="email"
                                autocomplete="off"
                                class="rounded-md px-4 py-2 border @error('email') border-red-600 @enderror mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md w-full"
                                placeholder="Email ... "/>
                         @error('email')<span class="p-2 mt-3 text-red-600 text-sm">{{$message}}</span> @enderror
                     </div>
+
+
                     <div class="my-5 text-sm">
                         <label for="password" class="block text-black">Password</label>
-                        <input wire:model.lazy="password" name="password" type="password" id="password"
+                        <input wire:model.defer="password" name="password" type="password" id="password"
                                class="rounded-md px-4 py-2 border @error('password') border-red-600 @enderror mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md w-full"
                                placeholder="Password ... "/>
                         @error('password')<span class="p-2 mt-3 text-red-600 text-sm">{{$message}}</span> @enderror
                     </div>
+
                     <div class="my-5 text-sm">
                         <label for="passwordConfirmation" class="block text-black">Password Confirmation</label>
-                        <input wire:model.lazy="passwordConfirmation" name="passwordConfirmation" type="password"
+                        <input type="password" hidden />
+                        <input wire:model.defer="passwordConfirmation" name="passwordConfirmation" type="password"
+                               autocomplete="none"
                                id="passwordConfirmation"
                                class="rounded-md px-4 py-2 border @error('passwordConfirmation') border-red-600 @enderror mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md w-full"
                                placeholder="Password Confirmation ... "/>
                         @error('passwordConfirmation')<span class="p-2 mt-3 text-red-600 text-sm">{{$message}}</span> @enderror
                     </div>
+
                 </div>
 
                 <div class="mb-3">
