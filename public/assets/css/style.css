@@ -1,0 +1,22 @@
+
+.mim-fnt{
+    font-family: 'Baloo Bhaina 2', cursive;
+}
+
+.btn-ai{
+    top: 2.5rem;
+    left: -2.5rem;
+}
+
+.btn-ai .ai{
+    position: absolute;
+    right: 0.75rem;
+    top: 2rem;
+}
+.italic{
+    font-style: italic;
+}
+
+i.leading-none{
+    line-height:unset !important;
+}
