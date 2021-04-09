@@ -41,16 +41,17 @@ class LoginController extends Controller
         $this->redirectTo = route('index');
     }
 
-    /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showLoginForm()
-    {
-//        auth()->login(User::all()->first());
-        return view('auth.login');
-    }
+    ///**
+    // * Show the application's login form.
+    // *
+    // * @return \Illuminate\Http\Response
+    // */
+    //public function showLoginForm()
+    //{
+    //    auth()->login(User::all()->first());
+    //    return view('auth.login');
+    //
+    //}
 
     /**
      * Get the guard to be used during authentication.

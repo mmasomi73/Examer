@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\IndexController::class, "index"])->name('index');
+//Route::get('/', [\App\Http\Controllers\IndexController::class, "index"])->name('index');
 
-Route::get('/login',[\App\Http\Controllers\Auth\LoginController::class, "showLoginForm"])->name('login');
-Route::get('/register',[\App\Http\Controllers\Auth\RegisterController::class, "register"])->name('register');
+Route::view('/','welcome')->name('home');
+
+
+Route::name('auth.')->group(function (){
+    Route::view('/login','auth.login')->name('login');
+    Route::view('/register','auth.register')->name('register');
+});
+
 
 Route::middleware('auth:web')->group(function (){
-    Route::get('/dashboard', [\App\Http\Controllers\IndexController::class, "dashboard"])->name('dashboard');
-    Route::get('/profile', [\App\Http\Controllers\IndexController::class, "profile"])->name('profile');
+
+    //Route::get('/dashboard', [\App\Http\Controllers\IndexController::class, "dashboard"])->name('dashboard');
+    //Route::get('/profile', [\App\Http\Controllers\IndexController::class, "profile"])->name('profile');
+
+    Route::view('/dashboard','user.dashboard')->name('dashboard');
+    Route::view('/profile','user.profile')->name('profile');
 });
