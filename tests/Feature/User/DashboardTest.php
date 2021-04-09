@@ -22,6 +22,6 @@ class DashboardTest extends TestCase
     /** @test **/
     public function unauthorized_people_cant_see_dashboard_page()
     {
-        $this->get(route('dashboard'))->assertRedirect(route('index'));
+        $this->get(route('dashboard'))->assertRedirect(route('login'));
     }
 }

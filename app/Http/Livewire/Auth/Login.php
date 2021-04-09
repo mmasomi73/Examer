@@ -13,9 +13,14 @@ class Login extends Component
     public $rememberMe = false;
 
     protected $rules = [
-        'email' => 'required|string|exists:users',
+        'email' => 'required|email',
         'password' => 'required|string',
     ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function login()
     {

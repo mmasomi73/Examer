@@ -18,4 +18,18 @@ class ProfileTest extends TestCase
 
         $this->actingAs($user)->get(route('profile'))->assertSeeLivewire('user.profile');
     }
+
+    /** @test **/
+    public function unauthorized_people_cant_see_profile_page()
+    {
+        $this->get(route('profile'))->assertRedirect(route('login'));
+    }
+
+    /** @test **/
+    public function can_update_profile()
+    {
+        $user = User::factory()->make();
+
+        $this->actingAs($user)->get(route('profile'))->assertSeeLivewire('user.profile');
+    }
 }

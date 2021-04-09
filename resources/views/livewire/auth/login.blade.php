@@ -14,7 +14,7 @@
                 <div class="mt-0">
                     <div class="my-5 text-sm">
                         <label for="email" class="block text-black">email</label>
-                        <input wire:model.lazy="email" name="email" type="text" id="email"
+                        <input wire:model="email" name="email" type="text" id="email"
                                autocomplete="off"
                                class="rounded-md px-4 py-2 border @error('email') border-red-600 @enderror mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm rounded-md w-full"
                                placeholder="email"/>
