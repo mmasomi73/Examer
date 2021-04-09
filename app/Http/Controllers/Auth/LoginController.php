@@ -48,8 +48,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        dd(User::all()->first());
-        auth()->login(User::all()->first());
+//        auth()->login(User::all()->first());
         return view('auth.login');
     }
 
