@@ -5,6 +5,7 @@ namespace Tests\Feature\User;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
@@ -28,8 +29,13 @@ class ProfileTest extends TestCase
     /** @test **/
     public function can_update_profile()
     {
-        $user = User::factory()->make();
+        $user = User::factory()->create();
 
-        $this->actingAs($user)->get(route('profile'))->assertSeeLivewire('user.profile');
+        Livewire::actingAs($user)->test('user.profile')
+            ->set('name', 'aida')
+            ->call('update');
+
+        $user->refresh();
+        $this->assertEquals('aida', $user->name);
     }
 }
