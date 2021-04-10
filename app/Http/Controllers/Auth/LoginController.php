@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -38,20 +38,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->redirectTo = route('index');
+        $this->redirectTo = route('home');
     }
 
-    ///**
-    // * Show the application's login form.
-    // *
-    // * @return \Illuminate\Http\Response
-    // */
-    //public function showLoginForm()
-    //{
-    //    auth()->login(User::all()->first());
-    //    return view('auth.login');
-    //
-    //}
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        //auth()->login(User::all()->first());
+        return view('auth.login');
+
+    }
 
     /**
      * Get the guard to be used during authentication.

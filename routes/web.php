@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,9 +25,6 @@ Route::name('auth.')->group(function (){
 
 
 Route::middleware('auth:web')->group(function (){
-
-    //Route::get('/dashboard', [\App\Http\Controllers\IndexController::class, "dashboard"])->name('dashboard');
-    //Route::get('/profile', [\App\Http\Controllers\IndexController::class, "profile"])->name('profile');
 
     Route::view('/dashboard','user.dashboard')->name('dashboard');
     Route::view('/profile','user.profile')->name('profile');

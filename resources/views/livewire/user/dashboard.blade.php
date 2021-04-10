@@ -51,9 +51,9 @@
             </li>
 
             <li class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg  shadow-lg -ml-4">
-                <a href="#" class="flex pl-4">
+                <a href="{{route('profile')}}" class="flex pl-4">
                     <i class="leading-none feather-user"></i>
-                    <span class="ml-2 capitalize font-medium">users</span>
+                    <span class="ml-2 capitalize font-medium text-black">profile</span>
                 </a>
             </li>
 
@@ -81,6 +81,7 @@
 
         </div>
     </nav>
+
     <main
         class="flex-1 flex flex-col bg-gray-100 dark:bg-gray-700 transition z-0
 		duration-500 ease-in-out overflow-y-auto">
