@@ -13,7 +13,7 @@
         <img
             class="h-12 w-12 rounded-full object-cover"
             src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
-            alt="enoshima profile" />
+            alt="enoshima profile"/>
         <h2
             class="mt-4 text-xl dark:text-gray-300 font-extrabold capitalize">
             {{auth()->user()->name}}
@@ -27,40 +27,41 @@
 
     <ul class="mt-2 text-gray-600">
         <!-- Links -->
-        <li class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg shadow-lg -ml-4">
+        <li class="mt-4 group shadow-cl transition duration-300 ease-in-out py-2 bg-white dark:bg-gray-200 hover:bg-green-400 hover:text-gray-50 cursor-pointer rounded-lg shadow-lg -ml-4">
             <a href="#" class="flex pl-4">
                 <i class="leading-none feather-grid"></i>
                 <span
-                    class="ml-2 capitalize font-medium text-black
+                    class="ml-2 capitalize font-medium text-black group-hover:text-gray-50 transition duration-300 ease-in-out
 						dark:text-gray-300">
 						dashboard
 					</span>
             </a>
         </li>
 
-        <li class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg  shadow-lg -ml-4">
+        <li class="mt-4 group shadow-cl transition duration-300 ease-in-out py-2 bg-white dark:bg-gray-200 hover:bg-green-400 hover:text-gray-50 cursor-pointer rounded-lg shadow-lg -ml-4">
             <a href="#" class="flex pl-4">
                 <i class="leading-none feather-calendar"></i>
                 <span
-                    class="ml-2 capitalize font-medium text-black
+                    class="ml-2 capitalize font-medium text-black group-hover:text-gray-50 transition duration-300 ease-in-out
 						dark:text-gray-300">
 						calendar
 					</span>
             </a>
         </li>
 
-        <li class="mt-8 shadow py-2 bg-white dark:bg-gray-200 rounded-lg  shadow-lg -ml-4">
+        <li class="mt-4 group shadow-cl transition duration-300 ease-in-out py-2 bg-white dark:bg-gray-200 hover:bg-green-400 hover:text-gray-50 cursor-pointer rounded-lg shadow-lg -ml-4">
             <a href="{{route('profile')}}" class="flex pl-4">
                 <i class="leading-none feather-user"></i>
-                <span class="ml-2 capitalize font-medium text-black">profile</span>
+                <span class="ml-2 capitalize font-medium text-black group-hover:text-gray-50 transition duration-300 ease-in-out
+						dark:text-gray-300">profile</span>
             </a>
         </li>
 
-        <li class="mt-8 py-2 bg-white dark:bg-gray-200 rounded-lg  shadow-lg -ml-4">
+        <li class="mt-4 group shadow-cl transition duration-300 ease-in-out py-2 bg-white dark:bg-gray-200 hover:bg-green-400 hover:text-gray-50 cursor-pointer rounded-lg shadow-lg -ml-4">
             <a href="#" class="flex pl-4">
                 <i class="leading-none feather-list"></i>
                 <span
-                    class="ml-2 capitalize font-medium text-black
+                    class="ml-2 capitalize font-medium text-black group-hover:text-gray-50 transition duration-300 ease-in-out
 						dark:text-gray-300">
 						tasks
 					</span>
