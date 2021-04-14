@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="{{asset('assets/css/feather.css')}}" rel="stylesheet" type="text/css">
+
+    @stack('styles')
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 
@@ -22,5 +24,8 @@
 
     @yield('content')
     @livewireScripts
+
+    @stack('scripts')
+
 </body>
 </html>

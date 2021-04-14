@@ -20,3 +20,11 @@
 i.leading-none{
     line-height:unset !important;
 }
+
+trix-toolbar .trix-button-group:not(:first-child) {
+     margin-left: 0.5vw;
+}
+
+trix-toolbar .trix-button--icon{
+    width: 2.1em;
+}

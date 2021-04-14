@@ -33,6 +33,18 @@
                                             </x-forms.group.bare>
                                         </div>
                                         <div class="">
+                                            <x-forms.group.bare label="Birthday" for="birthday" >
+                                                <x-forms.input.date wire:model.defer="birthday"
+                                                                    name="birthday"
+                                                                    type="text"
+                                                                    id="birthday"
+                                                                    :error="$errors->first('birthday')"
+                                                                    placeholder="YYYY/MM/DD"
+                                                                    autocomplete="off" />
+
+                                            </x-forms.group.bare>
+                                        </div>
+                                        <div class="">
                                             <x-forms.group.bare label="Username" for="username" >
                                                 <x-forms.input.text wire:model.defer="username"
                                                                     name="username"
@@ -48,11 +60,12 @@
                                         <div>
                                             <x-forms.group.bare label="About" for="about"
                                                                 help-text="Brief description for your profile. URLs are hyperlinked." >
-                                                <x-forms.input.textarea
-
+                                                <x-forms.input.rich-text
+                                                    id="about"
+                                                    :init-value="$about"
                                                     placeholder="Enter Some Text ... "
                                                     :error="$errors->first('about')"
-                                                    wire:model.defer="about" id="about" name="about" rows="3"  />
+                                                    wire:model.defer="about" />
 
 
                                             </x-forms.group.bare>
@@ -119,3 +132,14 @@
 
 </div>
 
+
+@push('styles')
+    <link href="{{asset('assets/css/pikaday.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/trix.css')}}" rel="stylesheet">
+@endpush
+
+@push('scripts')
+    <script src="{{asset('assets/js/moment.js')}}"></script>
+    <script src="{{asset('assets/js/pikaday.js')}}"></script>
+    <script src="{{asset('assets/js/trix.js')}}"></script>
+@endpush

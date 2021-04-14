@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->text('about')->nullable()->default(null);
             $table->string('avatar')->nullable()->default(null);
 
-            $table->timestamp('birth_date')->nullable()->default(null);
+            $table->timestamp('birthday')->nullable()->default(null);
             $table->string('cover')->nullable()->default(null);
             $table->string('status')->nullable()->default(null);
             $table->string('color')->nullable()->default(null);
