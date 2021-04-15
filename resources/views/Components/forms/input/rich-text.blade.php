@@ -9,7 +9,7 @@
      wire:ignore
      x-data
      class="mt-1 relative rounded-md shadow-sm"
-     @trix-blur="$dispatch('input', $event.target.value);console.log($event.target.value)"
+     @trix-blur="$dispatch('input', $event.target.value)"
      >
     <input id="{{$id}}" value="{{$initValue}}" type="hidden">
     <trix-editor input="{{$id}}" @if($placeholder) placeholder="{{$placeholder}}" @endif

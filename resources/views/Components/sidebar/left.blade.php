@@ -12,8 +12,7 @@
         <!-- User info -->
         <img
             class="h-12 w-12 rounded-full object-cover"
-            src="https://appzzang.me/data/editor/1608/f9c387cb6bd7a0b004f975cd92cbe2d9_1471626325_6802.png"
-            alt="enoshima profile"/>
+            src="{{auth()->user()->avatarUrl()}}" alt="{{auth()->user()->name}} Avatar"/>
         <h2
             class="mt-4 text-xl dark:text-gray-300 font-extrabold capitalize">
             {{auth()->user()->name}}

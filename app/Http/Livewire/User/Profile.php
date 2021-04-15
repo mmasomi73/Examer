@@ -3,9 +3,12 @@
 namespace App\Http\Livewire\User;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Profile extends Component
 {
+    use withFileUploads;
+
     public $name;
     public $username;
     public $about;
@@ -26,17 +29,24 @@ class Profile extends Component
             'name'=>"required|max:40",
             'username'=>"required|max:30",
             'about'=>"required|max:140",
-            'birthday'=>"sometimes"
+            'avatar'=>"nullable|image|max:2048",
+            'birthday'=>"sometimes|date|before:today"
         ]);
+
+        $filename = auth()->user()->avatar;
+        if (! empty($this->avatar))
+            $filename = $this->avatar->store('/', 'avatars');
 
 
         auth()->user()->update([
             'name'=>$this->name,
             'username'=>$this->username,
             'birthday'=>$this->birthday,
+            'avatar'=>$filename,
             'about'=>$this->about
         ]);
-        dd(auth()->user()->about);
+
+
     }
 
     public function render()

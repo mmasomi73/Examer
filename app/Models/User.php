@@ -48,4 +48,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'birthday' => 'date',
     ];
+
+    public function avatarUrl()
+    {
+        if (empty($this->avatar))
+            return \Storage::disk('avatars')->url('1740668454888131528.jpg');
+        return \Storage::disk('avatars')->url($this->avatar);
+    }
 }

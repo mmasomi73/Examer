@@ -5,6 +5,8 @@ namespace Tests\Feature\User;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -32,19 +34,24 @@ class ProfileTest extends TestCase
         $user = User::factory([
             'name'=>'john',
             'username'=>'john06',
+            'birthday'=>'2020/02/04',
             'about'=>'bar'
         ])->create();
 
         Livewire::actingAs($user)->test('user.profile')
             ->set([
-                'name'=>'john',
-                'username'=>'john06',
-                'about'=>'bar'
+                'name'=>'new-john',
+                'username'=>'new_john06',
+                'birthday'=>'2000/02/02',
+                'about'=>'new-bar'
             ])
             ->call('update');
 
         $user->refresh();
-        $this->assertEquals('john', $user->name);
+        $this->assertEquals('new-john', $user->name);
+        $this->assertEquals('new_john06', $user->username);
+        $this->assertEquals('2000/02/02',optional($user->birthday)->format("Y/m/d"));
+        $this->assertEquals('new-bar', $user->about);
     }
 
     /** @test **/
@@ -53,12 +60,98 @@ class ProfileTest extends TestCase
         $user = User::factory([
             'name'=>'john',
             'username'=>'john06',
+            'birthday'=>'2020/02/04',
             'about'=>'bar'
         ])->create();
 
         Livewire::actingAs($user)->test('user.profile')
             ->assertSet('name', 'john')
             ->assertSet('username', 'john06')
+            ->assertSet('birthday', '2020/02/04')
             ->assertSet('about', 'bar');
     }
+
+    /** @test **/
+    public function can_upload_avatar()
+    {
+        $user = User::factory([
+            'name'=>'john',
+            'username'=>'john06',
+            'birthday'=>'2020/02/04',
+            'about'=>'bar'
+        ])->create();
+
+        $filename = UploadedFile::fake()->image('avatar.jpg');
+        Storage::fake('avatars');
+
+        Livewire::actingAs($user)->test('user.profile')
+            ->set([
+                'name'=>'new-john',
+                'username'=>'new_john06',
+                'birthday'=>'2000/02/02',
+                'avatar'=>$filename,
+                'about'=>'new-bar'
+            ])
+            ->call('update');
+
+        $user->refresh();
+        $this->assertEquals('new-john', $user->name);
+        $this->assertEquals('new_john06', $user->username);
+        $this->assertEquals('2000/02/02',optional($user->birthday)->format("Y/m/d"));
+        $this->assertEquals('new-bar', $user->about);
+        $this->assertNotNull( $user->avatar);
+        Storage::disk('avatars')->assertExists($user->avatar);
+    }
+
+    /** @test **/
+    public function uploaded_avatar_is_image()
+    {
+        $user = User::factory([
+            'name'=>'john',
+            'username'=>'john06',
+            'birthday'=>'2020/02/04',
+            'about'=>'bar'
+        ])->create();
+
+        Storage::fake('avatars');
+        $filename = UploadedFile::fake()->create('document.pdf', 100);
+
+        Livewire::actingAs($user)->test('user.profile')
+            ->set([
+                'name'=>'new-john',
+                'username'=>'new_john06',
+                'birthday'=>'2000/02/02',
+                'avatar'=>$filename,
+                'about'=>'new-bar'
+            ])
+            ->call('update')
+            ->assertHasErrors(['avatar'=>'image']);
+
+    }
+
+    /** @test **/
+    public function uploaded_avatar_less_than_2meg()
+    {
+        $user = User::factory([
+            'name'=>'john',
+            'username'=>'john06',
+            'birthday'=>'2020/02/04',
+            'about'=>'bar'
+        ])->create();
+
+        $filename = UploadedFile::fake()->image('avatar.jpg')->size(2050);
+        Storage::fake('avatars');
+
+        Livewire::actingAs($user)->test('user.profile')
+            ->set([
+                'name'=>'new-john',
+                'username'=>'new_john06',
+                'birthday'=>'2000/02/02',
+                'avatar'=>$filename,
+                'about'=>'new-bar'
+            ])
+            ->call('update')
+            ->assertHasErrors(['avatar'=>'max']);
+    }
+
 }
