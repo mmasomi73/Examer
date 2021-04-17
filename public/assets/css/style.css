@@ -28,3 +28,7 @@ trix-toolbar .trix-button-group:not(:first-child) {
 trix-toolbar .trix-button--icon{
     width: 2.1em;
 }
+.filepond--credits{
+    display: none;
+    opacity: 0;
+}

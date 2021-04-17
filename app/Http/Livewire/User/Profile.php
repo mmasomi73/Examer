@@ -14,6 +14,7 @@ class Profile extends Component
     public $about;
     public $birthday;
     public $avatar;
+    public $cover;
 
     public function mount()
     {
@@ -30,6 +31,7 @@ class Profile extends Component
             'username'=>"required|max:30",
             'about'=>"required|max:140",
             'avatar'=>"nullable|image|max:2048",
+            'cover'=>"nullable|image|max:2048",
             'birthday'=>"sometimes|date|before:today"
         ]);
 
@@ -37,12 +39,17 @@ class Profile extends Component
         if (! empty($this->avatar))
             $filename = $this->avatar->store('/', 'avatars');
 
+        $cover = auth()->user()->cover;
+        if (! empty($this->cover))
+            $cover = $this->cover->store('/', 'covers');
+
 
         auth()->user()->update([
             'name'=>$this->name,
             'username'=>$this->username,
             'birthday'=>$this->birthday,
             'avatar'=>$filename,
+            'cover'=>$cover,
             'about'=>$this->about
         ]);
 

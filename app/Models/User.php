@@ -55,4 +55,10 @@ class User extends Authenticatable
             return \Storage::disk('avatars')->url('1740668454888131528.jpg');
         return \Storage::disk('avatars')->url($this->avatar);
     }
+    public function coverUrl()
+    {
+        if (empty($this->avatar))
+            return \Storage::disk('covers')->url('1740668454888131528.jpg');
+        return \Storage::disk('covers')->url($this->cover);
+    }
 }

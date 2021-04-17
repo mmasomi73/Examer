@@ -40,6 +40,12 @@ return [
             'url' => env('APP_URL').'/avatars',
             'visibility' => 'public',
         ],
+        'covers' => [
+            'driver' => 'local',
+            'root' => storage_path('app/covers'),
+            'url' => env('APP_URL').'/covers',
+            'visibility' => 'public',
+        ],
 
         'public' => [
             'driver' => 'local',
@@ -73,6 +79,7 @@ return [
 
     'links' => [
         public_path('avatars') => storage_path('app/avatars'),
+        public_path('covers') => storage_path('app/covers'),
     ],
 
 ];
