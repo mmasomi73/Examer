@@ -25,14 +25,10 @@ class Login extends Component
     public function login()
     {
         $this->validate();
-        $user = User::where('email',$this->email)->first();
-        if (!empty($user)){
-            if (Hash::check($this->password, $user->password)) {
-                auth()->login($user);
-               return redirect(route('dashboard'));
-            }
-        }
-        $this->addError('email', 'email or password incorrect!');
+        return auth()->attempt($this->validate()) ?
+                redirect()->intended(route('dashboard')) :
+                $this->addError("email", trans('auth.failed'));
+        
     }
 
 
