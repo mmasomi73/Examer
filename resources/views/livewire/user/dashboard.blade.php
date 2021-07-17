@@ -86,6 +86,7 @@
                 </div>
 
             </div>
+
             <div
                 class="mt-2 flex px-4 py-4 justify-between bg-white
 				dark:bg-gray-600 shadow-xl rounded-lg cursor-pointer ">

@@ -28,7 +28,7 @@ class Login extends Component
         return auth()->attempt($this->validate()) ?
                 redirect()->intended(route('dashboard')) :
                 $this->addError("email", trans('auth.failed'));
-        
+
     }
 
 

@@ -15,17 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', [\App\Http\Controllers\IndexController::class, "index"])->name('index');
 
-Route::view('/','welcome')->name('home');
+Route::view('/', 'welcome')->name('home');
 
 
-Route::name('auth.')->group(function (){
-    Route::view('/login','auth.login')->name('login');
-    Route::view('/register','auth.register')->name('register');
+Route::name('auth.')->group(function () {
+    Route::view('/login', 'auth.login')->name('login');
+    Route::view('/register', 'auth.register')->name('register');
 });
 
 
-Route::middleware('auth:web')->group(function (){
+Route::middleware('auth:web')->group(function () {
 
-    Route::view('/dashboard','user.dashboard')->name('dashboard');
-    Route::view('/profile','user.profile')->name('profile');
+    Route::view('/dashboard', 'user.dashboard')->name('dashboard');
+    Route::view('/profile', 'user.profile')->name('profile');
+
+//    Route::prefix('users')->group(function () {
+//        Route::name('users')->group(function () {
+//            Route::view('/users', 'user.users')->name('test');
+//        });
+//    });
 });
